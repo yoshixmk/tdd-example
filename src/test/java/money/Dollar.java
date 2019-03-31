@@ -9,7 +9,7 @@ public class Dollar {
 	}
 
 	public void times(int multiplier) {
-		// TODO Auto-generated method stub
+		this.mount *= multiplier;
 	}
 
 }
