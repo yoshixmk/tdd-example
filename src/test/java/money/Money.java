@@ -10,7 +10,9 @@ public class Money {
 
 	@Override
 	public boolean equals(Object obj) {
-		return this.amount == ((Money)obj).amount;
+		final Money money = (Money)obj;
+		return this.amount == money.amount
+				&& getClass().equals(money.getClass());
 	}
 
 }
