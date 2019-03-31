@@ -2,13 +2,13 @@ package money;
 
 public class Franc extends Money {
 
-	public Franc(int amount) {
+	public Franc(int amount, String currency) {
 		super.amount = amount;
-		super.currency = "CHF";
+		super.currency = currency;
 	}
 
 	@Override
 	public Money times(int multiplier) {
-		return new Franc(this.amount * multiplier);
+		return Money.franc(this.amount * multiplier);
 	}
 }

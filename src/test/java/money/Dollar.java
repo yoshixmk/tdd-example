@@ -2,14 +2,14 @@ package money;
 
 public class Dollar extends Money {
 
-	public Dollar(int mount) {
+	public Dollar(int mount, String currency) {
 		super.amount = mount;
-		super.currency = "USD";
+		super.currency = currency;
 	}
 
 	@Override
 	public Money times(int multiplier) {
-		return new Dollar(this.amount * multiplier);
+		return Money.dollar(this.amount * multiplier);
 	}
 
 }
