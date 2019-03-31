@@ -3,6 +3,7 @@ package money;
 abstract class Money {
 
 	protected int amount;
+	protected String currency;
 
 	public Money() {
 		super();
@@ -10,7 +11,11 @@ abstract class Money {
 	
 	abstract Money times(int multiplier);
 	
-	static Dollar dollar(int amount) {
+	public String currency() {
+		return this.currency;
+	}
+	
+	static Money dollar(int amount) {
 		return new Dollar(amount);
 	}
 	

@@ -3,7 +3,8 @@ package money;
 public class Dollar extends Money {
 
 	public Dollar(int mount) {
-		this.amount = mount;
+		super.amount = mount;
+		super.currency = "USD";
 	}
 
 	@Override

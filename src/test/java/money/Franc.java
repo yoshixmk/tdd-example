@@ -3,7 +3,8 @@ package money;
 public class Franc extends Money {
 
 	public Franc(int amount) {
-		this.amount = amount;
+		super.amount = amount;
+		super.currency = "CHF";
 	}
 
 	@Override

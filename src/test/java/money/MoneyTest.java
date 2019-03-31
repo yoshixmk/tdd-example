@@ -10,7 +10,7 @@ class MoneyTest {
 
 	@Test
 	void testMultiplication() {
-		Dollar five = Money.dollar(5);
+		Money five = Money.dollar(5);
 		assertEquals(new Dollar(10), five.times(2));
 		assertEquals(new Dollar(15), five.times(3));
 	}
@@ -29,6 +29,12 @@ class MoneyTest {
 		Franc five = Money.franc(5);
 		assertEquals(new Franc(10), five.times(2));
 		assertEquals(new Franc(15), five.times(3));
+	}
+	
+	@Test
+	void testCurrency() {
+		assertEquals("USD", Money.dollar(1).currency());
+		assertEquals("CHF", Money.franc(1).currency());
 	}
 	
 }
