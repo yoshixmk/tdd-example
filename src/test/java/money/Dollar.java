@@ -9,8 +9,7 @@ public class Dollar {
 	}
 
 	public Dollar times(int multiplier) {
-		this.mount *= multiplier;
-		return null;
+		return new Dollar(this.mount * multiplier);
 	}
 
 }
