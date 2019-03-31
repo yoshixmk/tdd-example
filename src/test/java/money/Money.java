@@ -1,15 +1,18 @@
 package money;
 
-abstract class Money {
+public class Money {
 
 	protected int amount;
 	protected String currency;
 
-	public Money() {
-		super();
+	public Money(int amount, String currency) {
+		this.amount = amount;
+		this.currency = currency;
 	}
 	
-	abstract Money times(int multiplier);
+	public Money times(int multiplier) {
+		return new Money(this.amount * multiplier, this.currency);
+	}
 	
 	public String currency() {
 		return this.currency;
@@ -27,7 +30,12 @@ abstract class Money {
 	public boolean equals(Object obj) {
 		final Money money = (Money)obj;
 		return this.amount == money.amount
-				&& getClass().equals(money.getClass());
+				&& this.currency.equals(money.currency);
+	}
+	
+	@Override
+	public String toString() {
+		return this.amount + " " + this.currency;
 	}
 
 }
