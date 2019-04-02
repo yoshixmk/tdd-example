@@ -38,4 +38,8 @@ public class Money {
 		return this.amount + " " + this.currency;
 	}
 
+	public Money plus(Money addend) {
+		return new Money(amount + addend.amount, this.currency);
+	}
+
 }
