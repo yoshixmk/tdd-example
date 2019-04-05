@@ -26,6 +26,10 @@ public class Money implements Expression {
 		return new Money(amount, "CHF");
 	}
 
+	public Expression plus(Money addend) {
+		return new Sum(this, addend);
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		final Money money = (Money) obj;
@@ -35,10 +39,6 @@ public class Money implements Expression {
 	@Override
 	public String toString() {
 		return this.amount + " " + this.currency;
-	}
-
-	public Expression plus(Money addend) {
-		return new Money(amount + addend.amount, this.currency);
 	}
 
 }
