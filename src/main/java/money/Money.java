@@ -31,6 +31,11 @@ public class Money implements Expression {
 	}
 
 	@Override
+	public Money reduce(String to) {
+		return this;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		final Money money = (Money) obj;
 		return this.amount == money.amount && this.currency.equals(money.currency);
@@ -40,5 +45,6 @@ public class Money implements Expression {
 	public String toString() {
 		return this.amount + " " + this.currency;
 	}
+
 
 }
