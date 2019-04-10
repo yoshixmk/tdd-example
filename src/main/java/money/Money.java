@@ -22,6 +22,7 @@ public class Money implements Expression {
 		return new Money(amount, "CHF");
 	}
 	
+	@Override
 	public Expression times(int multiplier) {
 		return new Money(this.amount * multiplier, this.currency);
 	}
