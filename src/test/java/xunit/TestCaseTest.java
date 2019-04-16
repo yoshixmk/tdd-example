@@ -1,6 +1,6 @@
 package xunit;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,21 +9,18 @@ class TestCaseTest {
 
 	WasRun test;
 
+	private String log = "";
+
 	@BeforeEach
 	void setUp() {
-		test = new WasRun("testMethod");
-		test.run();
+		test = new WasRun(log);
+		log += "setup ";
 	}
 
 	@Test
-	void testSetUp() {
-		assertTrue(test.wasSetUp());
-	}
-
-	@Test
-	void testRunning() {
+	void testTemplateMethod() {
 		test.run();
-		assertTrue(test.wasRun());
+		assertEquals(test.getLog(), "setup testMethod");
 	}
 
 }

@@ -2,12 +2,12 @@ package xunit;
 
 public class WasRun {
 
-	private String name;
+	private String log;
 	private boolean wasRun;
 	private boolean wasSetUp;
 
 	public WasRun(String name) {
-		this.name = name;
+		this.log = name;
 		this.wasSetUp = true;
 	}
 
@@ -16,7 +16,12 @@ public class WasRun {
 	}
 
 	public boolean wasRun() {
+		this.log += "testMethod";
 		return this.wasRun;
+	}
+
+	public String getLog() {
+		return log;
 	}
 
 	public boolean wasSetUp() {
