@@ -6,8 +6,8 @@ public class WasRun {
 	private boolean wasRun;
 	private boolean wasSetUp;
 
-	public WasRun(String name) {
-		this.log = name;
+	public WasRun() {
+		this.log = "";
 		this.wasSetUp = true;
 	}
 
@@ -16,8 +16,11 @@ public class WasRun {
 	}
 
 	public boolean wasRun() {
-		this.log += "testMethod";
 		return this.wasRun;
+	}
+	
+	public void addLog(String log) {
+		this.log += log;
 	}
 
 	public String getLog() {
