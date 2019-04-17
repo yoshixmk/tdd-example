@@ -1,4 +1,4 @@
-package suite;
+package guide;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,19 +11,18 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class TestSuiteTest {
+class AggregationTest {
 
 	// lamdaを使って複数 テスト
 	@Test
 	void groupedAssertions() {
-		assertAll("string case", 
-				() -> assertEquals("123abc", "123ABC".toLowerCase()),
+		assertAll("string case", () -> assertEquals("123abc", "123ABC".toLowerCase()),
 				() -> assertEquals("UPPER", "Upper".toUpperCase()));
 	}
 
 	// csv形式で複数テスト
 	@ParameterizedTest
-	@CsvSource({ "foo, 1", "bar, 2", "'baz, qux', 3" })
+	@CsvSource({ "foo, 1", "bar, 2", "baz, 3" })
 	void testWithCsvSource(String first, int second) {
 		assertNotNull(first);
 		assertNotEquals(0, second);
@@ -31,7 +30,7 @@ class TestSuiteTest {
 
 	// valueを直接与えて複数テスト
 	@ParameterizedTest
-	@ValueSource(strings = { "racecar", "radar", "able was I ere I saw elba" })
+	@ValueSource(strings = { "foo", "bar", "baz" })
 	void palindromes(String candidate) {
 		assertTrue(candidate.length() > 0);
 	}
