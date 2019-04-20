@@ -13,14 +13,14 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 class AggregationTest {
 
-	// lamdaを使って複数 テスト
+	// lamda multiple test
 	@Test
 	void groupedAssertions() {
 		assertAll("string case", () -> assertEquals("123abc", "123ABC".toLowerCase()),
 				() -> assertEquals("UPPER", "Upper".toUpperCase()));
 	}
 
-	// csv形式で複数テスト
+	// csv multiple test
 	@ParameterizedTest
 	@CsvSource({ "foo, 1", "bar, 2", "baz, 3" })
 	void testWithCsvSource(String first, int second) {
@@ -28,7 +28,7 @@ class AggregationTest {
 		assertNotEquals(0, second);
 	}
 
-	// valueを直接与えて複数テスト
+	// value multiple test
 	@ParameterizedTest
 	@ValueSource(strings = { "foo", "bar", "baz" })
 	void palindromes(String candidate) {
