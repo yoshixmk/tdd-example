@@ -13,7 +13,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Disabled;
 
-class AssertionsDemo {
+class AsssertTest {
 
     @Test
     @DisplayName("1分未満で終わるタスクであること")
