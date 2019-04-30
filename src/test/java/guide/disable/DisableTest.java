@@ -1,4 +1,4 @@
-package disable;
+package guide.disable;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
