@@ -73,4 +73,11 @@ class IntroTest {
 		verify(mockedList, atLeastOnce()).add("atLeastOnce");
 		// other expression, atLeast(2), atMost(5)
 	}
+
+	@Test
+	void 例外をモックするテスト() {
+		LinkedList<String> mockedList = mock(LinkedList.class);
+		doThrow(new RuntimeException()).when(mockedList).clear();
+		assertThrows(RuntimeException.class, () -> mockedList.clear());
+	}
 }
