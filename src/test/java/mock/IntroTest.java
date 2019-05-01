@@ -47,4 +47,14 @@ class IntroTest {
 
 		verifyNoMoreInteractions(mockedList);
 	}
+
+	@Test
+	void 引数マッチャーのテスト() {
+		LinkedList<String> mockedList = mock(LinkedList.class);
+		when(mockedList.get(anyInt())).thenReturn("element");
+
+		mockedList.get(999);
+
+		verify(mockedList).get(anyInt());
+	}
 }
