@@ -57,4 +57,20 @@ class IntroTest {
 
 		verify(mockedList).get(anyInt());
 	}
+
+	@Test
+	void 呼び出し回数のテスト() {
+		LinkedList<String> mockedList = mock(LinkedList.class);
+		mockedList.add("once");
+		mockedList.add("twice");
+		mockedList.add("twice");
+		mockedList.add("atLeastOnce");
+
+		verify(mockedList, times(1)).add("once");
+		verify(mockedList, times(2)).add("twice");
+		verify(mockedList, never()).add("never happened");
+
+		verify(mockedList, atLeastOnce()).add("atLeastOnce");
+		// other expression, atLeast(2), atMost(5)
+	}
 }
