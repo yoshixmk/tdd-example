@@ -80,4 +80,21 @@ class IntroTest {
 		doThrow(new RuntimeException()).when(mockedList).clear();
 		assertThrows(RuntimeException.class, () -> mockedList.clear());
 	}
+	
+	@Test
+	void 影響を与えないテスト() {
+		LinkedList<String> mockedList = mock(LinkedList.class);
+		LinkedList<String> mockedList2 = mock(LinkedList.class);
+		LinkedList<String> mockedList3 = mock(LinkedList.class);
+		mockedList.add("one");
+		// mockedList.add("two");
+
+		verify(mockedList).add("one");
+		verify(mockedList, never()).add("two");
+
+		// 他のmockへは影響がないこと
+		verifyZeroInteractions(mockedList2, mockedList3);
+		// mockへの変更が他にはないこと
+		verifyNoMoreInteractions(mockedList);
+	}
 }
