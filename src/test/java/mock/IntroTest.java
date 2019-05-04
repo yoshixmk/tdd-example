@@ -6,18 +6,23 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 import java.util.LinkedList;
-import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InOrder;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@SuppressWarnings({ "rawtypes", "unchecked" })
+@ExtendWith(MockitoExtension.class)
 class IntroTest {
-
+	
+	@Mock private LinkedList<String> mockedList;
+	@Mock private LinkedList<String> mockedList2;
+	@Mock private LinkedList<String> mockedList3;
+	
 	@Test
 	void 初めのテスト() {
-		List mockedList = mock(List.class);
-
 		mockedList.add("one");
 		mockedList.clear();
 
@@ -30,8 +35,6 @@ class IntroTest {
 
 	@Test
 	void スタブを順番に実行するテスト() {
-		LinkedList mockedList = mock(LinkedList.class);
-
 		when(mockedList.get(0)).thenReturn("first");
 		when(mockedList.get(1)).thenThrow(new RuntimeException());
 
@@ -50,7 +53,6 @@ class IntroTest {
 
 	@Test
 	void 引数マッチャーのテスト() {
-		LinkedList<String> mockedList = mock(LinkedList.class);
 		when(mockedList.get(anyInt())).thenReturn("element");
 
 		mockedList.get(999);
@@ -60,7 +62,6 @@ class IntroTest {
 
 	@Test
 	void 呼び出し回数のテスト() {
-		LinkedList<String> mockedList = mock(LinkedList.class);
 		mockedList.add("once");
 		mockedList.add("twice");
 		mockedList.add("twice");
@@ -76,16 +77,12 @@ class IntroTest {
 
 	@Test
 	void 例外をモックするテスト() {
-		LinkedList<String> mockedList = mock(LinkedList.class);
 		doThrow(new RuntimeException()).when(mockedList).clear();
 		assertThrows(RuntimeException.class, () -> mockedList.clear());
 	}
 	
 	@Test
 	void 影響を与えないテスト() {
-		LinkedList<String> mockedList = mock(LinkedList.class);
-		LinkedList<String> mockedList2 = mock(LinkedList.class);
-		LinkedList<String> mockedList3 = mock(LinkedList.class);
 		mockedList.add("one");
 		// mockedList.add("two");
 
