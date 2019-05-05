@@ -105,4 +105,12 @@ class IntroTest {
 		// mockへの変更が他にはないこと
 		verifyNoMoreInteractions(mockedList);
 	}
+	
+	@Test
+	void 呼び出しが同じで返り値が異なるケース() {
+		when(mockedList.get(0))
+		   .thenReturn("one", "two");
+		assertEquals("one", mockedList.get(0));
+		assertEquals("two", mockedList.get(0));
+	}
 }
